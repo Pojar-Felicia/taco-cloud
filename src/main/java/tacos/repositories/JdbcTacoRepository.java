@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 
 @Repository
 public class JdbcTacoRepository implements TacoRepository {
@@ -55,5 +56,58 @@ public class JdbcTacoRepository implements TacoRepository {
                 "insert into Taco_Ingredients (taco, ingredient) " +
                         "values (?, ?)",
                 tacoId, ingredient.getId());
+    }
+
+
+/***********************************************************************************************/
+
+    @Override
+    public <S extends Taco> Iterable<S> saveAll(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public Optional<Taco> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public Iterable<Taco> findAll() {
+        return null;
+    }
+
+    @Override
+    public Iterable<Taco> findAllById(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(Taco taco) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Taco> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
     }
 }

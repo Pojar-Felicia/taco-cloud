@@ -8,13 +8,11 @@ import org.springframework.stereotype.Repository;
 import tacos.domain.Order;
 import tacos.domain.Taco;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class JdbcOrderRepository implements OrderRepository {
+
 
     private SimpleJdbcInsert orderInserter;
     private SimpleJdbcInsert orderTacoInserter;
@@ -32,7 +30,6 @@ public class JdbcOrderRepository implements OrderRepository {
         this.objectMapper = new ObjectMapper();
     }
 
-    @Override
     public Order save(Order order) {
         order.setPlacedAt(new Date());
         long orderId = saveOrderDetails(order);
@@ -45,7 +42,7 @@ public class JdbcOrderRepository implements OrderRepository {
     }
 
     private long saveOrderDetails(Order order) {
-        @SuppressWarnings("unchecked")
+
         Map<String, Object> values =
                 objectMapper.convertValue(order, Map.class);
         values.put("placedAt", order.getPlacedAt());
@@ -63,4 +60,59 @@ public class JdbcOrderRepository implements OrderRepository {
     }
 
 
+    /***********************************************************************************************/
+
+//    public JdbcOrderRepository() {
+//        super();
+//    }
+
+    @Override
+    public <S extends Order> Iterable<S> saveAll(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public Optional<Order> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public Iterable<Order> findAll() {
+        return null;
+    }
+
+    @Override
+    public Iterable<Order> findAllById(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(Order order) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Order> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }
